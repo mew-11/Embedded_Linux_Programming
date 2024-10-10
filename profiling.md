@@ -19,3 +19,5 @@
 - A raspberry pi 4
 - A 5V 3A USB-C power supply
 - An ethernet cable and port for network connectivity
+
+use yockto and buildroot, gdb
