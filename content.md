@@ -21,9 +21,7 @@ Page 648-683
 1. Profiling with `top`, `htop`
    1.1 Intro `top`
    1.2 Poor man’s profiler => using gdbserver (chapter 19)
-   => Tai
 2. Profiling with `perf`
-   => Thuy Tien, Mai Lien
 
 # Tracing
 
@@ -32,20 +30,15 @@ Page 648-683
    3.2. Preparing to use Ftrace
    3.3. Using Ftrace
    3.4. Dynamic Ftrace and trace filters
-   => Tri, Man
 4. Using LTTng => LTT (Linux Trace Toolkit)
    4.1. LTTng and the Yocto Project
    4.2. LTTng and Buildroot
    4.3. Using LTTng for kernel tracing
-   => Xuan Mai, Huynh
 5. Using BPF (Berkeley Packet Filter)
    5.1. Configuring the kernel for BPF with buildroot
    5.2. Build a BCC toolkit with Buildroot
    5.3. Using BPF tracing tools
-   => Tien
 6. Using Valgrind
    6.1. Callgrind
    6.2. Helgrind
-   => Phu
 7. Using `strace`
-   => Tai
