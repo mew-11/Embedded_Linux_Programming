@@ -63,9 +63,7 @@ When the build finishes, the image is written to a file named output/images/ sdc
 - After configuring Buildroot, you need to enable openssh (make menuconfig)
 
 ```bash
-touch ssh.sh
-chmod 755 ssh.sh
-cat <<'EOF' > ssh.sh
+cat << 'EOF' > ssh.sh
 #!/bin/bash
 options=(
    "BR2_PACKAGE_OPENSSH=y"
@@ -75,23 +73,20 @@ options=(
    "BR2_PACKAGE_OPENSSH_SANDBOX=y"
 )
 
-for option in "\${options[@]}"; do
-   if grep -q "^#.*\${option%=*}" ".config"; then
-      sed -i "s/^#.*\(\${option%=*}=y\)/\1/" ".config"
-      echo "uncommented \${option}"
-   elif grep -q "^\${option}" ".config"; then
-      echo "\${option} is enabled"
+for option in "${options[@]}"; do
+   if grep -q "^#.*${option%=*}" ".config"; then
+      sed -i "s/^#.*\(${option%=*}=y\)/\1/" ".config"
+      echo "uncommented ${option}"
+   elif grep -q "^${option}" ".config"; then
+      echo "${option} is enabled"
    else
-      echo "\${option}" >>".config"
-      echo "added \${option}"
+      echo "${option}" >> ".config"
+      echo "added ${option}"
    fi
 done
 EOF
-```
 
-- Run ssh.sh
-
-```bash
+chmod +x ssh.sh
 ./ssh.sh
 ```
 
