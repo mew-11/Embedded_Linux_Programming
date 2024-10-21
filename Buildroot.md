@@ -58,6 +58,26 @@ When the build finishes, the image is written to a file named output/images/ sdc
 
 # Conifguring Buildroot
 
+## Enable openssh
+
+```bash
+touch ssh.sh
+chmod 755 ssh.sh
+cat <<EOF > ssh.sh
+#!/bin/bash
+if grep -q "^#.*BR2_PACKAGE_OPENSSH=y" ".config"; then
+   sed -i 's/^#\(.*BR2_PACKAGE_OPENSSH=y\)/\1/' ".config"
+   echo "removing comment."
+elif grep -q "^BR2_PACKAGE_OPENSSH=y" ".config"; then
+   echo "enabled."
+else
+   echo "BR2_PACKAGE_OPENSSH=y" >>".config"
+   echo "Added"
+fi
+EOF
+./ssh.sh
+```
+
 ## Remote debugging using gdbserver
 
 ```bash
