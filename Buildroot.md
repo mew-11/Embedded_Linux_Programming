@@ -60,22 +60,35 @@ When the build finishes, the image is written to a file named output/images/ sdc
 
 ## Enable openssh
 
+- After configuring Buildroot, you need to enable openssh (make menuconfig)
+
 ```bash
 touch ssh.sh
 chmod 755 ssh.sh
-cat <<EOF > ssh.sh
+cat <<'EOF' > ssh.sh
 #!/bin/bash
-if grep -q "^#.*BR2_PACKAGE_OPENSSH=y" ".config"; then
-   sed -i 's/^#\(.*BR2_PACKAGE_OPENSSH=y\)/\1/' ".config"
-   echo "removing comment."
-elif grep -q "^BR2_PACKAGE_OPENSSH=y" ".config"; then
-   echo "enabled."
-else
-   echo "BR2_PACKAGE_OPENSSH=y" >>".config"
-   echo "Added"
-fi
+options=(
+   "BR2_PACKAGE_OPENSSH=y"
+   "BR2_PACKAGE_OPENSSH_CLIENT=y"
+   "BR2_PACKAGE_OPENSSH_SERVER=y"
+   "BR2_PACKAGE_OPENSSH_KEY_UTILS=y"
+   "BR2_PACKAGE_OPENSSH_SANDBOX=y"
+)
+
+for option in "\${options[@]}"; do
+   if grep -q "^#.*\${option%=*}" ".config"; then
+      sed -i "s/^#.*\(\${option%=*}=y\)/\1/" ".config"
+      echo "uncommented \${option}"
+   elif grep -q "^\${option}" ".config"; then
+      echo "\${option} is enabled"
+   else
+      echo "\${option}" >>".config"
+      echo "added \${option}"
+   fi
+done
 EOF
 ./ssh.sh
+
 ```
 
 ## Remote debugging using gdbserver
