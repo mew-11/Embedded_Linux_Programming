@@ -36,8 +36,7 @@ sudo apt install python3-sphinx python3-sphinx-rtd-theme
 ```
 
 ```bash
-git clone -b dunfell git://git.yoctoproject.org/poky.git
-# using branch dunfell
+git clone -b kirkstone git://git.yoctoproject.org/poky.git
 ```
 
 ```bash
