@@ -87,8 +87,12 @@ for option in "\${options[@]}"; do
    fi
 done
 EOF
-./ssh.sh
+```
 
+- Run ssh.sh
+
+```bash
+./ssh.sh
 ```
 
 ## Remote debugging using gdbserver
