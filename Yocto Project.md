@@ -36,7 +36,14 @@ sudo apt install python3-sphinx python3-sphinx-rtd-theme
 ```
 
 ```bash
-git clone -b scarthgap git://git.yoctoproject.org/poky.git
+git clone -b dunfell git://git.yoctoproject.org/poky.git
+```
+
+- Layer for raspberry
+
+```bash
+git clone -b dunfell git://git.openembedded.org/metaopenembedded
+git clone -b dunfell git://git.yoctoproject.org/metaraspberrypi
 ```
 
 ```bash
@@ -49,16 +56,13 @@ source poky/oe-init-build-env build-qemuarm # using with qemu
 
 - In file conf/local.conf => edit `MACHINE ?= "qemuarm"` => to runqemu
 
+FIX: this and proxy
+
 ```
 Uncomment in file conf/local.conf to improve speed build
-BB_HASHSERVE_UPSTREAM = "wss://hashserv.yoctoproject.org/ws"
-SSTATE_MIRRORS ?= "file://.* http://cdn.jsdelivr.net/yocto/sstate/all/PATH;downloadfilename=PATH"
 BB_HASHSERVE = "auto"
 BB_SIGNATURE_HANDLER = "OEEquivHash"
 ```
-
-Issue with proxy
-Link doc: https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy
 
 ```bash
 bitbake -c listtasks core-image-minimal
