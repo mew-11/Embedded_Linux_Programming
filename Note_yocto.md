@@ -89,3 +89,27 @@ sudo pacman -S git tar python gcc make chrpath cpio diffstat patch rpcsvc-proto
   - Step 5: `do_populate_sysroot`
   - Step 6: `do_rootfs`
   - Step 7: `do_build`
+
+# Explain contents of file in yocto project
+
+```bash
+cd meta/recipes-core/images
+ls -l core* # show all recipes
+cat core-image-base.bb
+```
+
+```BitBake
+SUMMARY = "A console-only image that fully supports the
+target device \
+hardware."
+IMAGE_FEATURES += "splash"
+LICENSE = "MIT"
+inherit core-image
+```
+
+=> This recipe inherits from `core-image` => import the contents of `core-image.bbclass`
+
+```bash
+cd ../../classes
+cat core-image.bbclass
+```

@@ -46,11 +46,6 @@ Link doc: https://buildroot.org/downloads/manual/manual.html
 
 # Build real-time Linux kernel (PREEMPT_RT) with Yocto Project
 
-Link doc: https://docs.yoctoproject.org/2.5/overview-manual/overview-manual.html
-
-# Note test
-
-```bash
-
+```
 
 ```
