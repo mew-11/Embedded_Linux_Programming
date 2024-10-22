@@ -4,7 +4,7 @@ Step 1: install toolchain
 
 ```bash
 # build tool
-sudo apt install sed make binutils build-essential diffutils gcc g++ bash patch gzip bzip2 perl tar cpio unzip rsync file bc findutils libncurses-dev wget libncurses5-dev flex bison
+sudo apt install git sed make binutils build-essential diffutils gcc g++ bash patch gzip bzip2 perl tar cpio unzip rsync file bc findutils libncurses-dev wget libncurses5-dev flex bison
 # source fetching tool
 sudo apt install wget
 # link doc: https://buildroot.org/downloads/manual/manual.html#requirement
