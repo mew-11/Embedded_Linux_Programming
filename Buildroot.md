@@ -13,7 +13,7 @@ sudo apt install wget
 Step 2: clone repo to build
 
 ```bash
-git clone git://git.buildroot.net/buildroot -b 2020.02.9
+git clone git://git.buildroot.net/buildroot
 cd buildroot
 ```
 
@@ -228,6 +228,10 @@ TODO: extra at page 673(699)
 
 ## Configuring for building a BCC toolkit with Buildroot
 
+```bash
+git clone https://github.com/PacktPublishing/Mastering-Embedded-Linux-Programming-Third-Edition.git
+```
+
 - At 674(700)
 
 ## Configuring Valgrind
@@ -239,3 +243,5 @@ TODO: extra at page 673(699)
 
 - Testing...
   - link: https://buildroot.org/downloads/manual/manual.html#adding-packages
+
+## SSH connect with raspberry
