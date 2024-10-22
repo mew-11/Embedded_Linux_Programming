@@ -4,9 +4,8 @@ Step 1: install toolchain
 
 ```bash
 # build tool
-sudo apt install git sed make binutils build-essential diffutils gcc g++ bash patch gzip bzip2 perl tar cpio unzip rsync file bc findutils libncurses-dev wget libncurses5-dev flex bison
+sudo apt install git sed make binutils build-essential diffutils gcc g++ bash patch gzip bzip2 perl tar cpio unzip rsync file bc findutils libncurses-dev wget libncurses5-dev flex bison wget
 # source fetching tool
-sudo apt install wget
 # link doc: https://buildroot.org/downloads/manual/manual.html#requirement
 ```
 
@@ -214,25 +213,28 @@ make linux-configure
  make linux-menuconfig
 ```
 
-To search for a specific kernel configuration option from the interactive menu, hit / and
-enter a search string
-
-CONFIG_BPF=y
-CONFIG_BPF_SYSCALL=y
-
-CONFIG_NET_CLS_BPF=m
-CONFIG_NET_ACT_BPF=m
-CONFIG_BPF_JIT=y
-
-TODO: extra at page 673(699)
-
 ## Configuring for building a BCC toolkit with Buildroot
 
-```bash
-git clone https://github.com/PacktPublishing/Mastering-Embedded-Linux-Programming-Third-Edition.git
-```
+To add the bcc package to your system
+image, perform the following steps:
 
-- At 674(700)
+1. Navigate to Target packages | Debugging, profiling and benchmark and
+   select bcc.
+2. Back out of Debugging, profiling and benchmark and drill down into Libraries |
+   Other. Verify that clang, llvm, and LLVM's BPF backend are all selected.
+3. Back out of Libraries | Other and drill down into Interpreter languages and
+   scripting. Verify that python3 is selected so that you can run the various tools and
+   examples that come bundled with BCC.
+4. Back out of Interpreter languages and scripting and select Show packages that are
+   also provided by busybox under BusyBox from the Target packages page.
+5. Drill down into System tools and verify that tar is selected for extracting the
+   kernel headers.
+6. Save your changes and exit menuconfig.
+
+```bash
+make savedefconfig
+make
+```
 
 ## Configuring Valgrind
 
