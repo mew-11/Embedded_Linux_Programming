@@ -68,6 +68,11 @@ BB_HASHSERVE = "auto"
 BB_SIGNATURE_HANDLER = "OEEquivHash"
 ```
 
+```bash
+# using commands
+echo "MACHINE = \"raspberrypi4\"" >> conf/local.conf
+```
+
 ```
 In file bblayers.conf
 
@@ -168,6 +173,128 @@ bitbake core-image-minimal-dev
 ```bash
  bitbake -c populate_sdk core-image-minimal-dev
 ```
+
+- debug on VSCODE
+
+```bash
+# install dependencies
+sudo apt-get -y update
+sudo apt-get -y install build-essential gdb gdb-multiarch git
+# install ext
+code --install-extension ms-vscode.cpptools
+```
+
+```bash
+# start debug with a folder
+$ mkdir ~/var-hello-world
+$ cd ~/var-hello-world
+$ code .
+```
+
+Next, create the following files:
+
+- main.cpp: Source code for the demo program hello.bin
+- Makefile: Makefile to cross compile main.cpp to hello.bin
+- .vscode/settings.json: VS Code file to configure global environment variables for the SDK/toolchain
+- .vscode/tasks.json: VS Code file to override or add new tasks. Runs Makefile when VS Code build command is executed.
+- .vscode/c_cpp_properties.json: VS Code file to configure include path for IntelliSense.
+
+```main.cpp
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+```Makefile
+all: main.cpp
+	$(CXX) $(CXXFLAGS) -Og main.cpp -g -o hello.bin
+clean:
+	rm -f hello.bin
+```
+
+```settings.json
+{
+	"VARISCITE": {
+		/* Target Device Settings */
+		"TARGET_IP":"192.168.0.141",
+
+		/* Project Settings */
+		"PROGRAM":"hello.bin",
+
+		/* Yocto SDK Configuration */
+		"ARCH":"aarch64-fslc-linux",
+                "OECORE_NATIVE_SYSROOT":"/opt/fslc-xwayland/3.1/sysroots/x86_64-fslcsdk-linux",
+                "SDKTARGETSYSROOT": "/opt/fslc-xwayland/3.1/sysroots/aarch64-fslc-linux",
+
+		/* Yocto SDK Constants */
+                "CC_PREFIX": "${config:VARISCITE.OECORE_NATIVE_SYSROOT}/usr/bin/${config:VARISCITE.ARCH}/${config:VARISCITE.ARCH}-",
+		"CXX": "${config:VARISCITE.CC_PREFIX}g++ --sysroot=${config:VARISCITE.SDKTARGETSYSROOT}",
+		"CC": "${config:VARISCITE.CC_PREFIX}gcc --sysroot=${config:VARISCITE.SDKTARGETSYSROOT}",
+	}
+}
+```
+
+```task.json
+{
+    "version": "2.0.0",
+    /* Configure Yocto SDK Constants from settings.json */
+    "options": {
+        "env": {
+            "CXX": "${config:VARISCITE.CXX}",         /* Used by Makefile */
+            "CC": "${config:VARISCITE.CC}",           /* Used by Makefile */
+        }
+     },
+     /* Configure integrated VS Code Terminal */
+     "presentation": {
+        "echo": false,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+    },
+    "tasks": [
+        /* Configure Build Task */
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make clean; make -j$(nproc)",
+            "problemMatcher": ["$gcc"]
+        },
+    ]
+}
+```
+
+```c_cpp_properties.json
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${config:VARISCITE.SDKTARGETSYSROOT}/usr/include/**"
+            ]
+        }
+    ],
+    "version": 4
+}
+```
+
+```bash
+scp hello.bin root@<ip addr>:/home/root
+
+```
+
+Launch hello.bin on the target device:
+
+```bash
+./hello.bin
+
+```
+
+- details: https://variwiki.com/index.php?title=Yocto_Programming_with_VSCode
 
 ### Perf
 
