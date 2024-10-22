@@ -36,7 +36,7 @@ sudo apt install python3-sphinx python3-sphinx-rtd-theme
 ```
 
 ```bash
-git clone -b kirkstone git://git.yoctoproject.org/poky.git
+git clone -b scarthgap git://git.yoctoproject.org/poky.git
 ```
 
 ```bash
