@@ -42,3 +42,5 @@ Raspberry:
 PREFERRED_PROVIDER_virtual/kernel = "linux-raspberrypi4-rt"
 COMPATIBLE_MACHINE_raspberrypi4 = "raspberrypi4"
 ```
+
+# Build real-time Linux kernel (PREEMPT_RT) with Buildroot

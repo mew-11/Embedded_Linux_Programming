@@ -6,7 +6,7 @@
 
 ```bash
 sudo apt update
-sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1 libegl1-mesa libsdl1.2-dev pylint xterm mesa-common-dev vim
+sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1 libegl1-mesa libsdl1.2-dev pylint xterm mesa-common-dev vim bzip2
 sudo locale-gen en_US.UTF-8
 ```
 
@@ -16,7 +16,7 @@ git config --global https.version HTTP/1.1
 
 Note: If your build system has the oss4-dev package installed, you might experience QEMU build failures due to the package installing its own custom /usr/include/linux/soundcard.h on the Debian system. If you run into this situation, try either of these solutions:
 
-```bash
+````bash
 # Steps to reproduce:
 # 1. Install Ubuntu 20.04 System on an LPAR|z/VM guest|KVM guest from ports.ubuntu.com
 # 2. Uncomment all #deb-src lines in /etc/apt/sources.list
@@ -26,7 +26,7 @@ sudo apt install build-essential
 apt source qemu
 sudo apt build-dep qemu
 sudo apt remove oss4-dev
-```
+`` it`
 
 - package for python
 
@@ -34,7 +34,7 @@ sudo apt remove oss4-dev
 sudo apt install git make inkscape texlive-latex-extra
 sudo apt install python3-sphinx python3-sphinx-rtd-theme
 
-```
+````
 
 ```bash
 mkdir ~/yocto_build
@@ -43,13 +43,14 @@ git clone -b dunfell git://git.yoctoproject.org/poky.git ~/yocto_build
 
 ```bash
 mkdir ~/yocto_build/layer
-git clone -b dunfell git://git.openembedded.org/metaopenembedded ~/yocto_build/layer
-git clone -b dunfell git://git.yoctoproject.org/metaraspberrypi ~/yocto_build/layer
+cd ~/yocto_build/layer
+git clone -b dunfell git://git.openembedded.org/metaopenembedded 
+git clone -b dunfell git://git.yoctoproject.org/metaraspberrypi
 
 ```
 
 ```bash
-cd yocto_build
+cd ~/yocto_build
 source poky/oe-init-build-env
 # You must source this script each time you want to work on this project.
 # You can choose a different working directory by adding it as a parameter to oe-init-build-env
@@ -131,7 +132,7 @@ runqemu qemux86_64 nographic
 1. Insert a microSD card into your host machine.
 2. Launch Etcher.
 3. Click Flash from file from Etcher.
-4. Locate the wic.bz2 image that you built for the Raspberry Pi 4 and open it.
+4. Locate the wic.bz2 image that you built for the Raspberry Pi 4 and `bzip2` it.
 5. Click Select target from Etcher.
 6. Select the microSD card that you inserted in Step 1.
 7. Click Flash from Etcher to write the image.
