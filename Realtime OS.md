@@ -28,7 +28,8 @@ Link doc: https://buildroot.org/downloads/manual/manual.html
 # Build real-time Linux kernel (PREEMPT_RT) with Yocto Project
 
 - Add this to file conf/local.conf
-  BBB:
+
+BBB:
 
 ```
 PREFERRED_PROVIDER_virtual/kernel = "linux-yocto-rt"
