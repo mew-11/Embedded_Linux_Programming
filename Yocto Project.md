@@ -81,6 +81,9 @@ In file bblayers.conf
 BBLAYERS ?= " \
   /home/user/yocto/poky/meta \
   /home/user/yocto/poky/meta-poky \
+  /home/user/yocto/meta-openembedded/meta-python \
+  /home/user/yocto/meta-openembedded/meta-multimedia \
+  /home/user/yocto/meta-openembedded/meta-networking \
   /home/user/yocto/meta-openembedded/meta-oe \
   /home/user/yocto/meta-yocto-bsp \
 "
