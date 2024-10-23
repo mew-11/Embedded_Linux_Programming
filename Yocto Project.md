@@ -44,8 +44,8 @@ git clone -b dunfell git://git.yoctoproject.org/poky.git ~/yocto_build
 ```bash
 mkdir ~/yocto_build/layer
 cd ~/yocto_build/layer
-git clone -b dunfell git://git.openembedded.org/metaopenembedded 
-git clone -b dunfell git://git.yoctoproject.org/metaraspberrypi
+git clone -b dunfell git://git.openembedded.org/meta-openembedded
+git clone -b dunfell git://git.yoctoproject.org/meta-raspberrypi
 
 ```
 
