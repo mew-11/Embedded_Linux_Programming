@@ -38,7 +38,8 @@ sudo apt install python3-sphinx python3-sphinx-rtd-theme
 
 ```bash
 mkdir ~/yocto_build
-git clone -b dunfell git://git.yoctoproject.org/poky.git ~/yocto_build
+cd ~/yocto_build/
+git clone -b dunfell git://git.yoctoproject.org/poky.git 
 ```
 
 ```bash
