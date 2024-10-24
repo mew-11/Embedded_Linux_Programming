@@ -24,6 +24,7 @@ Link doc: https://wiki.linuxfoundation.org/realtime/documentation/start
 Link doc: https://www.acontis.com/en/building-a-real-time-linux-kernel-in-ubuntu-preemptrt.html
 Link doc: https://ros-realtime.github.io/Guides/Real-Time-Operating-System-Setup/Real-Time-Linux/how_to_build_your_own_linux-real_time_kernel.html
 Link doc: https://buildroot.org/downloads/manual/manual.html
+Link doc: https://www.instructables.com/Building-GNULinux-Distribution-for-Raspberry-Pi-Us/
 
 # Build real-time Linux kernel (PREEMPT_RT) with Yocto Project
 

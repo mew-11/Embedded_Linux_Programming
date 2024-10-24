@@ -17,3 +17,7 @@
   - Network
 
 - Example: Can access the GPIO driver through a group of files in `/sys/class/gpio`
+
+Link doc: https://lancesimms.com/RaspberryPi/HackingRaspberryPi4WithYocto_Introduction.html
+Link doc: https://www.ics.com/blog/control-raspberry-pi-gpio-pins-python
+Link doc: https://www.raspberrypi.com/documentation/computers/os.html#use-python-on-a-raspberry-pi
