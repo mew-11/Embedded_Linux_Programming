@@ -21,3 +21,6 @@
 Link doc: https://lancesimms.com/RaspberryPi/HackingRaspberryPi4WithYocto_Introduction.html
 Link doc: https://www.ics.com/blog/control-raspberry-pi-gpio-pins-python
 Link doc: https://www.raspberrypi.com/documentation/computers/os.html#use-python-on-a-raspberry-pi
+Link doc: https://realpython.com/python-raspberry-pi/#interacting-with-physical-components
+Link doc: https://www.kdnuggets.com/build-a-command-line-app-with-python-in-7-easy-steps
+Link doc: https://episyche.com/blog/how-to-build-a-cli-tool-using-python
